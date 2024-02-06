@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { connectToMongoDB } from './config/mongoose.js';
-import { registerValidator } from './validations/auth.js';
+import { registerValidator } from './validations/registerValidator.js';
 import { checkAuth } from './utils/checkAuth.js';
 import { createProductValidator } from './validations/createProductValidator.js';
 import { createCategoryValidator } from './validations/createCategoryValidator.js';
