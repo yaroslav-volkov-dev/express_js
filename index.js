@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { connectToMongoDB } from './config/mongoose.js';
 import { registerValidator } from './validations/registerValidator.js';
 import { checkAuth } from './utils/checkAuth.js';
-import { createProductValidator } from './validations/createProductValidator.js';
+import { createProductValidator, deleteProductValidator } from './validations/productValidators.js';
 import { createCategoryValidator } from './validations/createCategoryValidator.js';
 import * as UserController from './controllers/UserController.js';
 import * as ProductsController from './controllers/ProductController.js';
@@ -22,12 +22,11 @@ app.post('/auth/register', registerValidator, UserController.register);
 app.post('/auth/login', UserController.login);
 app.get('/auth/me', checkAuth, UserController.getMe);
 
-app.get('/products/get-all', ProductsController.getAllProducts);
+app.get('/products', ProductsController.getAllProducts);
 app.post('/products/create', createProductValidator, ProductsController.createProduct);
+app.delete('/products/delete', deleteProductValidator, ProductsController.deleteProduct);
 
-app.get('/categories/get-all', CategoryController.getAllCategories);
+app.get('/categories', CategoryController.getAllCategories);
 app.post('/categories/create', createCategoryValidator, CategoryController.createCategory);
 
-app.listen(port, () => {
-  console.log(`Server working on port: ${port}`);
-});
+app.listen(port, () => console.log(`Server started on port: ${port}`));
