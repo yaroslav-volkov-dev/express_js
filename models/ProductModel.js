@@ -6,7 +6,8 @@ const ProductModel = new mongoose.Schema({
     required: true,
   },
   categoryId: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
     required: true
   }
 });
