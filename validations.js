@@ -13,10 +13,11 @@ export const loginValidator = [
 ];
 
 export const createCategoryValidator = [body('name').notEmpty()];
+export const deleteCategoryValidator = [body('_id').isMongoId()];
 
 export const createProductValidator = [
   body('name').notEmpty(),
-  body('categoryId').notEmpty(),
+  body('categoryId').notEmpty().optional(),
 ];
 
 export const deleteProductValidator = [

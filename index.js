@@ -7,7 +7,7 @@ import * as ProductsController from './controllers/ProductController.js';
 import * as CategoryController from './controllers/CategoriesContoller.js';
 import {
   createCategoryValidator,
-  createProductValidator,
+  createProductValidator, deleteCategoryValidator,
   deleteProductValidator,
   loginValidator,
   registerValidator
@@ -32,5 +32,6 @@ app.delete('/products', deleteProductValidator, ProductsController.deleteProduct
 
 app.get('/categories', CategoryController.getAllCategories);
 app.post('/categories', createCategoryValidator, CategoryController.createCategory);
+app.delete('/categories', deleteCategoryValidator, CategoryController.deleteCategory);
 
 app.listen(port, () => console.log(`Server started on port: ${port}`));
