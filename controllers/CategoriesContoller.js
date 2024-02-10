@@ -4,7 +4,7 @@ import ProductModel from '../models/ProductModel.js';
 
 export const getAllCategories = async (req, res) => {
   try {
-    const data = await CategoryModel.find({});
+    const data = await CategoryModel.find();
     res.json({ data, success: true });
   } catch (error) {
     res.status(500).json({ message: 'Cannot get all categories' });
