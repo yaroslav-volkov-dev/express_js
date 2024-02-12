@@ -35,3 +35,5 @@ app.post('/categories', createCategoryValidator, CategoryController.createCatego
 app.delete('/categories', deleteCategoryValidator, CategoryController.deleteCategory);
 
 app.listen(port, () => console.log(`Server started on port: ${port}`));
+
+export default app;
