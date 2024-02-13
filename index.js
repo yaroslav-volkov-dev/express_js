@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { connectToMongoDB } from './config/mongoose.js';
 import { checkAuth } from './utils/checkAuth.js';
 import * as UserController from './controllers/UserController.js';
@@ -21,6 +22,11 @@ const port = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.json());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.post('/auth/register', registerValidator, UserController.register);
 app.post('/auth/login', loginValidator, UserController.login);
