@@ -1,5 +1,4 @@
 import CategoryModel from '../models/CategoryModel.js';
-import { validationResult } from 'express-validator';
 import ProductModel from '../models/ProductModel.js';
 
 export const getAllCategories = async (req, res) => {
@@ -13,9 +12,6 @@ export const getAllCategories = async (req, res) => {
 
 export const createCategory = async (req, res) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json(errors.array());
-
     const doc = new CategoryModel(req.body);
 
     const newCategory = await doc.save();
@@ -29,9 +25,6 @@ export const createCategory = async (req, res) => {
 
 export const deleteCategory = async (req, res) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json(errors.array());
-
     const { _id } = req.body;
 
     await ProductModel.updateMany({ categoryId: _id }, { categoryId: null });
