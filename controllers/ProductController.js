@@ -3,8 +3,8 @@ import { validationResult } from 'express-validator';
 
 export const getAllProducts = async (req, res) => {
   try {
-    const data = await ProductModel.find({});
-    res.json({ data, success: true });
+    const data = await ProductModel.find();
+    res.json(data);
 
   } catch (error) {
     res.status(500).json({ message: 'Cannot get products list' });
