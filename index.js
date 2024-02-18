@@ -25,7 +25,7 @@ const app = express();
 
 const storage = multer.diskStorage({
   destination: (_, __, callback) => {
-    callback(null, 'uploads');
+    callback(null, 'public');
   },
   filename: (req, file, callback) => {
     callback(null, file.originalname)
@@ -35,7 +35,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 app.use(express.json());
-app.use('/uploads', express.static('public'));
+app.use(express.static('public'));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
