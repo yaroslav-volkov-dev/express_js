@@ -9,6 +9,20 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Category',
     default: null
+  },
+  img: {
+    url: {
+      type: String,
+      required: true
+    },
+    alt: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    }
   }
 });
 
