@@ -14,8 +14,8 @@ export const register = async (req, res) => {
     const { passwordHash, ...userdata } = user._doc;
 
     res.json({ ...userdata, token });
-  } catch (error) {
-    res.status(500).json({ error, message: 'Can not register' });
+  } catch {
+    res.status(500).json({  message: 'Can not register' });
   }
 };
 
@@ -31,7 +31,7 @@ export const login = async (req, res) => {
     const { passwordHash, ...userdata } = user._doc;
     res.json({ ...userdata, token });
   } catch (error) {
-    res.status(500).json({ error, message: 'Can not checkAuth' });
+    res.status(500).json({ message: 'Can not checkAuth' });
   }
 };
 
@@ -44,6 +44,6 @@ export const getMe = async (req, res) => {
     const { passwordHash, ...userdata } = user._doc;
     res.json(userdata);
   } catch (error) {
-    res.status(500).json({error, message: 'No access' });
+    res.status(500).json({ message: 'No access' });
   }
 };
