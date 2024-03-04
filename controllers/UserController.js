@@ -43,7 +43,7 @@ export const getMe = async (req, res) => {
 
     const { passwordHash, ...userdata } = user._doc;
     res.json(userdata);
-  } catch (err) {
-    res.status(500).json({ message: 'No access' });
+  } catch (error) {
+    res.status(500).json({error, message: 'No access' });
   }
 };
