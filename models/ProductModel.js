@@ -13,7 +13,6 @@ const productSchema = new Schema({
   img: {
     url: {
       type: String,
-      required: true
     },
     alt: {
       type: String,
@@ -22,7 +21,7 @@ const productSchema = new Schema({
     title: {
       type: String,
       default: ''
-    }
+    },
   }
 });
 
